@@ -8,7 +8,7 @@
 <meta name="description" content="Franco Gaido, desarrollador Full Stack .NET + Angular. CV, experiencia y CentralTurnos, su SaaS de gestión de turnos.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200..800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap">
 <script>document.documentElement.classList.add('js');try{var th=localStorage.getItem('fg-theme');if(th)document.documentElement.dataset.theme=th}catch(e){}</script>
 <style>
 /* Layout: one long scroll; big type up top, a pinned horizontal strip for the case studies, sticky "booking board" as the project's signature visual. */
@@ -68,9 +68,11 @@ code{font:500 .84em var(--f-mono);background:var(--soft);padding:.1em .35em;bord
 .status{font:500 1rem var(--f-body);color:var(--muted);margin:0 0 1.6rem}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--live);box-shadow:0 0 0 0 var(--live);animation:pulse 2.2s infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--live) 60%,transparent)}70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
-.name{font-size:clamp(3.6rem,13vw,11rem);line-height:.92;letter-spacing:-.05em;font-weight:600;margin:0 0 2.5rem;will-change:transform}
+.name{font-size:clamp(3.6rem,18vw,11rem);line-height:.92;letter-spacing:-.05em;font-weight:600;margin:0 0 2.5rem;will-change:transform}
 .name .line{display:block;overflow:hidden;padding-bottom:.04em}
-.name .line:last-child{color:var(--muted)}
+.name .line:last-child{color:var(--muted);font-family:var(--f-serif);font-style:italic;font-weight:400;letter-spacing:-.02em}
+.name .line:last-child .ch{font-weight:400}
+@media (min-width:900px){.name{font-size:clamp(3.6rem,11.5vw,12rem);white-space:nowrap}.name .line{display:inline-block;vertical-align:top}.name .line:last-child{margin-left:.22em}}
 .name .ch{display:inline-block}
 .js .name .ch{animation:rise 1s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*45ms + 100ms + var(--ld,0s))}
 @keyframes rise{from{transform:translateY(105%)}to{transform:none}}
@@ -78,7 +80,7 @@ code{font:500 .84em var(--f-mono);background:var(--soft);padding:.1em .35em;bord
 .role{font-size:clamp(1.25rem,2.3vw,1.7rem);line-height:1.4;max-width:30ch;margin:0;color:var(--muted)}
 .role strong{font:italic 400 1.25em/1 var(--f-serif);color:var(--fg);letter-spacing:0}
 .cta{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:flex-end}
-.btn{display:inline-flex;align-items:center;gap:.55rem;font:500 .95rem var(--f-body);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:.7rem 1.1rem;transition:background .2s,border-color .2s;background:var(--bg2);cursor:pointer;color:var(--fg)}
+.btn{will-change:transform;display:inline-flex;align-items:center;gap:.55rem;font:500 .95rem var(--f-body);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:.7rem 1.1rem;transition:background .2s,border-color .2s,transform .35s cubic-bezier(.2,.8,.2,1);background:var(--bg2);cursor:pointer;color:var(--fg)}
 .btn:hover{border-color:color-mix(in srgb,var(--fg) 30%,var(--line))}
 .btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 .btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2}
@@ -97,15 +99,15 @@ code{font:500 .84em var(--f-mono);background:var(--soft);padding:.1em .35em;bord
 .profile .w{opacity:var(--o,1);transition:opacity .15s linear}
 
 /* Experience */
-.jobs{display:grid;border-top:1px solid var(--line)}
-.job{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:2rem;padding-block:2.4rem;border-bottom:1px solid var(--line)}
+.jobs{display:grid;gap:1.2rem}
+.job{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:2rem;padding:2.2rem;background:var(--bg2);border:1px solid var(--line);border-radius:14px;position:sticky;top:calc(84px + var(--k,0) * 16px);transform-origin:50% 0;will-change:transform}
 .job h3{font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.1}
 .job .where{color:var(--muted);margin:.7rem 0 0;font-size:.98rem}
 .job .when{font:500 .95rem var(--f-body);color:var(--fg);margin:.8rem 0 0}
 .job ul{margin:0;padding:0;list-style:none;display:grid;gap:.75rem;color:color-mix(in srgb,var(--fg) 82%,var(--bg))}
 .job li{padding-left:1.4rem;position:relative}
 .job li::before{content:"–";position:absolute;left:0;top:0;color:var(--muted)}
-@media (max-width:760px){.job{grid-template-columns:1fr;gap:1.2rem}}
+@media (max-width:760px){.job{grid-template-columns:1fr;gap:1.2rem;padding:1.4rem}}
 
 /* CentralTurnos */
 .ct{background:var(--bg2);border-block:1px solid var(--line)}
@@ -224,9 +226,22 @@ body.zone .bar{background:color-mix(in srgb,var(--bg) 82%,transparent)}
 .sig.pre path{stroke-dashoffset:900}
 
 /* Giant footer name */
-.giant{font:600 clamp(3.5rem,15.5vw,15rem)/.8 var(--f-display);letter-spacing:-.06em;margin:4rem 0 0;white-space:nowrap;overflow:hidden;color:var(--fg)}
-.giant em{font:italic 400 1.05em var(--f-serif);letter-spacing:-.02em}
+.contact .giant{font:600 clamp(3rem,12vw,12.5rem)/.85 var(--f-display);letter-spacing:-.06em;margin:4rem 0 0;white-space:nowrap;overflow:hidden;color:var(--fg)}
+.contact .giant em{font:italic 400 1.05em var(--f-serif);letter-spacing:-.02em}
 @media (prefers-reduced-motion:reduce){.loader{display:none}.split.pre .wd > span{transform:none}.sig.pre path{stroke-dashoffset:0}}
+
+
+/* Scroll progress */
+.progress{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:2px;width:100%;background:var(--accent);transform-origin:0 50%;transform:scaleX(0);z-index:30}
+/* Cursor follower (fine pointers only) */
+.cursor{position:fixed;left:0;top:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--fg);pointer-events:none;z-index:90;transition:width .25s,height .25s,margin .25s,background .25s,opacity .25s;mix-blend-mode:difference;opacity:0}
+.cursor.on{opacity:1}
+.cursor.big{width:56px;height:56px;margin:-28px 0 0 -28px}
+@media (hover:none),(pointer:coarse){.cursor{display:none}}
+.name .ch{font-variation-settings:"wght" var(--w,600);font-weight:var(--w,600);transition:font-weight .25s}
+.case{transform:skewX(var(--skew,0deg));transition:border-color .3s}
+.case:hover{border-color:var(--accent)}
+
 
 /* Reveal */
 .rv{transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
@@ -239,6 +254,8 @@ body.zone .bar{background:color-mix(in srgb,var(--bg) 82%,transparent)}
 </style>
 
 <div class="loader" id="loader" aria-hidden="true" hidden><span><i>Franco</i> <i style="animation-delay:.12s"><em>Gaido</em></i></span></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
 </head>
 <body>
 <header class="bar" id="bar">
@@ -378,7 +395,7 @@ body.zone .bar{background:color-mix(in srgb,var(--bg) 82%,transparent)}
         <a class="btn" href="https://www.linkedin.com/in/franco-gaido" target="_blank" rel="noopener">LinkedIn</a>
         <a class="btn" href="https://github.com/Gauido" target="_blank" rel="noopener">GitHub</a>
       </div>
-      <p class="giant" aria-hidden="true">Franco <em>Gaido</em></p>
+      <p class="giant" aria-hidden="true"><span id="giant" style="display:inline-block;will-change:transform">Franco <em>Gaido</em></span></p>
       <footer><span data-k="footer"></span></footer>
     </div>
   </section>
@@ -614,8 +631,8 @@ function render(l){
   $("#nav").innerHTML = u.nav.map(([id,n]) => `<a href="#${id}">${n}</a>`).join("");
 
   $("#profile").innerHTML = t.profile.split(/\s+/).map(w => `<span class="w">${w}</span>`).join(" ");
-  $("#jobs").innerHTML = t.jobs.map(j => `
-    <article class="job rv" id="${j.id}">
+  $("#jobs").innerHTML = t.jobs.map((j,i) => `
+    <article class="job" id="${j.id}" style="--k:${i}">
       <div><h3>${j.t}</h3><p class="where">${j.r}<br>${j.w}</p><p class="when">${j.d}</p></div>
       <ul>${j.b.map(x => `<li>${x}</li>`).join("")}</ul>
     </article>`).join("");
@@ -699,10 +716,22 @@ const nameEl = $("#name"), bar = $("#bar");
 function onScroll(){
   const y = scrollY;
   bar.classList.toggle("scrolled", y > 10);
+  const max = document.documentElement.scrollHeight - innerHeight;
+  $("#progress").style.transform = `scaleX(${max > 0 ? y / max : 0})`;
   const z1 = $("#centralturnos").getBoundingClientRect(), z2 = hs.getBoundingClientRect(), mid = innerHeight * 0.5;
   document.body.classList.toggle("zone", z1.top < mid && z2.bottom > mid);
   if (!reduce){
     nameEl.style.transform = `translate3d(0,${Math.min(y,600)*0.25}px,0)`;
+    // stacked job cards: each one shrinks a little as the next one covers it
+    const jobs = [...document.querySelectorAll(".job")];
+    jobs.forEach((j,i) => {
+      const next = jobs[i+1]; if (!next || innerWidth < 760){ j.style.transform = ""; return; }
+      const a = j.getBoundingClientRect(), b = next.getBoundingClientRect();
+      const cover = Math.min(1, Math.max(0, 1 - (b.top - a.top) / a.height));
+      j.style.transform = `scale(${1 - cover*0.05})`; j.style.opacity = 1 - cover*0.35;
+    });
+    const g = $("#giant"), gr = g.getBoundingClientRect();
+    g.style.transform = `translate3d(${Math.min(innerWidth, Math.max(0, max - y) * 0.6)}px,0,0)`;
     // profile words light up as the paragraph passes the middle of the screen
     const words = document.querySelectorAll("#profile .w"), r = $("#profile").getBoundingClientRect();
     const p = Math.min(1, Math.max(0, (innerHeight*0.85 - r.top) / (r.height + innerHeight*0.35)));
@@ -724,8 +753,14 @@ if (window.Lenis && !reduce){
 } else {
   addEventListener("scroll", onScroll, { passive: true });
 }
+let skew = 0, prevY = scrollY;
 function raf(time){
   if (lenis) lenis.raf(time);
+  if (!reduce && hsDist){
+    const v = lenis ? lenis.velocity : (scrollY - prevY); prevY = scrollY;
+    skew += (Math.max(-8, Math.min(8, -v * 0.35)) - skew) * 0.12;
+    cases.style.setProperty("--skew", skew.toFixed(2) + "deg");
+  }
   requestAnimationFrame(raf);
 }
 requestAnimationFrame(raf);
@@ -740,6 +775,27 @@ document.addEventListener("click", e => {
   if (lenis) lenis.scrollTo(el, { offset: -70, duration: 1.4 });
   else el.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
 });
+
+// Pointer effects (desktop only)
+if (!reduce && matchMedia("(hover:hover) and (pointer:fine)").matches){
+  const cur = $("#cursor"); let cx = innerWidth/2, cy = innerHeight/2, tx = cx, ty = cy;
+  addEventListener("mousemove", e => { tx = e.clientX; ty = e.clientY; cur.classList.add("on");
+    // hero letters get heavier near the pointer
+    document.querySelectorAll("#name .ch").forEach(ch => {
+      const r = ch.getBoundingClientRect(), d = Math.hypot(tx - (r.left + r.width/2), ty - (r.top + r.height/2));
+      ch.style.setProperty("--w", Math.round(800 - Math.min(1, d / 320) * 500));
+    });
+  }, { passive: true });
+  document.addEventListener("mouseleave", () => cur.classList.remove("on"));
+  (function loop(){ cx += (tx - cx) * 0.2; cy += (ty - cy) * 0.2; cur.style.transform = `translate3d(${cx}px,${cy}px,0)`; requestAnimationFrame(loop); })();
+  document.addEventListener("mouseover", e => cur.classList.toggle("big", !!e.target.closest("a,button")));
+  // magnetic buttons
+  document.querySelectorAll(".btn").forEach(b => {
+    b.addEventListener("mousemove", e => { const r = b.getBoundingClientRect();
+      b.style.transform = `translate(${(e.clientX - r.left - r.width/2) * 0.25}px,${(e.clientY - r.top - r.height/2) * 0.35}px)`; });
+    b.addEventListener("mouseleave", () => { b.style.transform = ""; });
+  });
+}
 
 // Controls
 document.querySelectorAll("[data-set-lang]").forEach(b => b.addEventListener("click", () => render(b.dataset.setLang)));
