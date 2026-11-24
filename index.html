@@ -8,7 +8,7 @@
 <meta name="description" content="Franco Gaido, desarrollador Full Stack .NET + Angular. CV, experiencia y CentralTurnos, su SaaS de gestión de turnos.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap">
 <script>document.documentElement.classList.add('js');try{var th=localStorage.getItem('fg-theme');if(th)document.documentElement.dataset.theme=th}catch(e){}</script>
 <style>
 /* Layout: one long scroll; big type up top, a pinned horizontal strip for the case studies, sticky "booking board" as the project's signature visual. */
@@ -19,6 +19,7 @@
   --f-display:'Inter Tight','Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
   --f-body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
   --f-mono:ui-monospace,Menlo,Consolas,monospace;
+  --f-serif:'Instrument Serif',Georgia,'Times New Roman',serif;
   --wrap:1120px; --gut:max(20px,env(safe-area-inset-left,0px)); --gutR:max(20px,env(safe-area-inset-right,0px));
   color-scheme:light;
 }
@@ -71,11 +72,11 @@ code{font:500 .84em var(--f-mono);background:var(--soft);padding:.1em .35em;bord
 .name .line{display:block;overflow:hidden;padding-bottom:.04em}
 .name .line:last-child{color:var(--muted)}
 .name .ch{display:inline-block}
-.js .name .ch{animation:rise 1s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*45ms + 100ms)}
+.js .name .ch{animation:rise 1s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*45ms + 100ms + var(--ld,0s))}
 @keyframes rise{from{transform:translateY(105%)}to{transform:none}}
 .hero-foot{display:grid;grid-template-columns:minmax(0,1.2fr) auto;gap:2rem;align-items:end}
-.role{font-size:clamp(1.15rem,2vw,1.45rem);line-height:1.45;max-width:36ch;margin:0;color:var(--muted)}
-.role strong{color:var(--accent);font-weight:600}
+.role{font-size:clamp(1.25rem,2.3vw,1.7rem);line-height:1.4;max-width:30ch;margin:0;color:var(--muted)}
+.role strong{font:italic 400 1.25em/1 var(--f-serif);color:var(--fg);letter-spacing:0}
 .cta{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:flex-end}
 .btn{display:inline-flex;align-items:center;gap:.55rem;font:500 .95rem var(--f-body);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:.7rem 1.1rem;transition:background .2s,border-color .2s;background:var(--bg2);cursor:pointer;color:var(--fg)}
 .btn:hover{border-color:color-mix(in srgb,var(--fg) 30%,var(--line))}
@@ -190,6 +191,43 @@ code{font:500 .84em var(--f-mono);background:var(--soft);padding:.1em .35em;bord
 .mail{font:500 clamp(1.1rem,2.6vw,1.6rem) var(--f-body);user-select:all;word-break:break-all}
 footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font:400 .9rem var(--f-body);padding-block:4rem 2rem}
 
+
+/* Preloader (first visit per session) */
+.loader{position:fixed;inset:0;z-index:100;background:var(--fg);color:var(--bg);display:grid;place-items:center;transition:transform .9s cubic-bezier(.7,0,.2,1)}
+.loader span{display:block;overflow:hidden;font:600 clamp(2rem,6vw,4rem)/1 var(--f-display);letter-spacing:-.04em}
+.loader span i{display:inline-block;font-style:normal;animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+.loader span em{font:italic 400 1.1em var(--f-serif);letter-spacing:0}
+.loader.out{transform:translateY(-100%)}
+
+/* Word-by-word heading reveal */
+.split .wd{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.split .wd > span{display:inline-block;transition:transform .9s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i)*70ms)}
+.split.pre{opacity:1;transform:none}
+.split.pre .wd > span{transform:translateY(110%)}
+.sec-title em{font:italic 400 1.08em var(--f-serif);letter-spacing:-.01em}
+
+/* Section color shift (CentralTurnos zone) */
+body{transition:background-color .7s ease,color .7s ease}
+body.zone{--bg:#0F2340; --bg2:#14294A; --fg:#F1F4F9; --muted:#A7B4C9; --line:#26406A; --accent:#D6F24B; --accent-ink:#0F2340; --soft:#1C3560; --shadow:none}
+body.zone .bar{background:color-mix(in srgb,var(--bg) 82%,transparent)}
+.ct{background:transparent!important;border-block:0!important}
+
+/* Big facts, Swiss-grid style */
+.nums{border:0!important;border-radius:0!important;background:none!important;gap:0 2rem!important}
+.nums div{background:none!important;padding:1.4rem 0 0!important;border-top:1px solid var(--line)}
+.nums dt{font-size:clamp(2.8rem,6vw,4.6rem)!important;font-weight:500!important}
+
+/* Signature stroke under contact heading */
+.sig{display:block;width:min(420px,70%);height:auto;margin:-1rem 0 2rem;color:var(--accent)}
+.sig path{fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-dasharray:900;stroke-dashoffset:0;transition:stroke-dashoffset 1.6s cubic-bezier(.6,0,.2,1)}
+.sig.pre{opacity:1;transform:none}
+.sig.pre path{stroke-dashoffset:900}
+
+/* Giant footer name */
+.giant{font:600 clamp(3.5rem,15.5vw,15rem)/.8 var(--f-display);letter-spacing:-.06em;margin:4rem 0 0;white-space:nowrap;overflow:hidden;color:var(--fg)}
+.giant em{font:italic 400 1.05em var(--f-serif);letter-spacing:-.02em}
+@media (prefers-reduced-motion:reduce){.loader{display:none}.split.pre .wd > span{transform:none}.sig.pre path{stroke-dashoffset:0}}
+
 /* Reveal */
 .rv{transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
 .rv.pre{opacity:0;transform:translateY(40px)}
@@ -200,6 +238,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:
 }
 </style>
 
+<div class="loader" id="loader" aria-hidden="true" hidden><span><i>Franco</i> <i style="animation-delay:.12s"><em>Gaido</em></i></span></div>
 </head>
 <body>
 <header class="bar" id="bar">
@@ -245,7 +284,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:
 
   <section class="sec" id="experiencia">
     <div class="wrap">
-      <h2 class="sec-title rv" data-k="expTitle"></h2>
+      <h2 class="sec-title rv split" data-k="expTitle"></h2>
       <div class="jobs" id="jobs"></div>
     </div>
   </section>
@@ -274,7 +313,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:
   <section class="hs" id="casos">
     <div class="hs-pin">
       <div class="wrap hs-head">
-        <h2 class="sec-title" data-k="casesTitle"></h2>
+        <h2 class="sec-title rv split" data-k="casesTitle"></h2>
         <p data-k="casesLead"></p>
       </div>
       <div class="cases" id="cases"></div>
@@ -284,21 +323,21 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:
 
   <section class="sec" id="integraciones">
     <div class="wrap">
-      <h2 class="sec-title rv" data-k="intTitle"></h2>
+      <h2 class="sec-title rv split" data-k="intTitle"></h2>
       <dl class="dl rv" id="integrations"></dl>
     </div>
   </section>
 
   <section class="sec" id="servicios">
     <div class="wrap">
-      <h2 class="sec-title rv" data-k="svcTitle"></h2>
+      <h2 class="sec-title rv split" data-k="svcTitle"></h2>
       <div class="services" id="services"></div>
     </div>
   </section>
 
   <section class="sec" id="stack">
     <div class="wrap">
-      <h2 class="sec-title rv" data-k="skillsTitle"></h2>
+      <h2 class="sec-title rv split" data-k="skillsTitle"></h2>
       <dl class="dl rv" id="skills"></dl>
     </div>
   </section>
@@ -326,7 +365,8 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:
 
   <section class="contact" id="contacto">
     <div class="wrap">
-      <h2 class="big rv" data-k="contactTitle"></h2>
+      <h2 class="big rv split" data-k="contactTitle"></h2>
+      <svg class="sig rv" viewBox="0 0 420 40" aria-hidden="true"><path d="M4 28 C 60 8, 110 36, 170 20 S 280 6, 330 22 S 400 30, 416 14"/></svg>
       <p class="rv" data-k="contactText"></p>
       <div class="mailrow">
         <span class="mail" id="mail">francogaido2014@gmail.com</span>
@@ -338,6 +378,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:
         <a class="btn" href="https://www.linkedin.com/in/franco-gaido" target="_blank" rel="noopener">LinkedIn</a>
         <a class="btn" href="https://github.com/Gauido" target="_blank" rel="noopener">GitHub</a>
       </div>
+      <p class="giant" aria-hidden="true">Franco <em>Gaido</em></p>
       <footer><span data-k="footer"></span></footer>
     </div>
   </section>
@@ -592,6 +633,10 @@ function render(l){
   });
   $("#boardGrid").innerHTML = g;
   try { localStorage.setItem("fg-lang", l); } catch(e){}
+  document.querySelectorAll(".split").forEach(h => {
+    const words = h.textContent.trim().split(/\s+/);
+    h.innerHTML = words.map((w,i) => `<span class="wd"><span style="--i:${i}">${i === words.length-1 && words.length > 1 ? `<em>${w}</em>` : w}</span></span>`).join(" ");
+  });
   setupReveal(); layoutH(); onScroll();
 }
 
@@ -654,6 +699,8 @@ const nameEl = $("#name"), bar = $("#bar");
 function onScroll(){
   const y = scrollY;
   bar.classList.toggle("scrolled", y > 10);
+  const z1 = $("#centralturnos").getBoundingClientRect(), z2 = hs.getBoundingClientRect(), mid = innerHeight * 0.5;
+  document.body.classList.toggle("zone", z1.top < mid && z2.bottom > mid);
   if (!reduce){
     nameEl.style.transform = `translate3d(0,${Math.min(y,600)*0.25}px,0)`;
     // profile words light up as the paragraph passes the middle of the screen
@@ -712,6 +759,17 @@ addEventListener("resize", () => { layoutH(); onScroll(); });
 let start = "es";
 try { start = localStorage.getItem("fg-lang") || (navigator.language || "es").slice(0,2); } catch(e){}
 render(T[start] ? start : "es");
+
+// Preloader: once per session
+(function(){
+  const l = $("#loader"); let seen = false;
+  try { seen = sessionStorage.getItem("fg-seen") === "1"; sessionStorage.setItem("fg-seen","1"); } catch(e){}
+  if (reduce || seen) return;
+  l.hidden = false; if (lenis) lenis.stop();
+  document.documentElement.style.setProperty("--ld","1.2s");
+  setTimeout(() => { l.classList.add("out"); if (lenis) lenis.start(); }, 1300);
+  setTimeout(() => { l.hidden = true; }, 2300);
+})();
 </script>
 
 </body>
