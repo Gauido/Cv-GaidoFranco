@@ -8,7 +8,7 @@
 <meta name="description" content="Franco Gaido, desarrollador Full Stack .NET + Angular. CV, experiencia y CentralTurnos, su SaaS de gestión de turnos.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200..800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200..800&family=Schibsted+Grotesk:wght@500..800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap">
 <script>document.documentElement.classList.add('js');try{var th=localStorage.getItem('fg-theme');if(th)document.documentElement.dataset.theme=th}catch(e){}</script>
 <style>
 /* Layout: one long scroll; big type up top, a pinned horizontal strip for the case studies, sticky "booking board" as the project's signature visual. */
@@ -210,7 +210,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:
 
 /* Section color shift (CentralTurnos zone) */
 body{transition:background-color .7s ease,color .7s ease}
-body.zone{--bg:#0F2340; --bg2:#14294A; --fg:#F1F4F9; --muted:#A7B4C9; --line:#26406A; --accent:#D6F24B; --accent-ink:#0F2340; --soft:#1C3560; --shadow:none}
+body.zone{--bg:#141A14; --bg2:#1A1F16; --fg:#F3F5EE; --muted:#AAB1A0; --line:#2C3527; --accent:#C6F36B; --accent-ink:#141A14; --soft:#232B1D; --shadow:none}
 body.zone .bar{background:color-mix(in srgb,var(--bg) 82%,transparent)}
 .ct{background:transparent!important;border-block:0!important}
 
@@ -242,6 +242,46 @@ body.zone .bar{background:color-mix(in srgb,var(--bg) 82%,transparent)}
 .case{transform:skewX(var(--skew,0deg));transition:border-color .3s}
 .case:hover{border-color:var(--accent)}
 
+
+
+/* CentralTurnos brand (taken from the product's own landing) */
+:root{--ct-font:'Schibsted Grotesk','Inter Tight',system-ui,sans-serif; --ct-lime:#C6F36B; --ct-ink:#23271F; --ct-green:#416900; --ct-paper:#FFFFFF; --ct-slot:#DFE2D6; --ct-wa:#D9FDD3; --ct-text:#191C1D; --ct-sub:#6B7065}
+.ct h2,.ct h3,#casos h2,#casos h4,.ct .nums dt{font-family:var(--ct-font);letter-spacing:-.03em}
+.ct .btn,#casos .btn{border-radius:999px}
+.ct{position:relative;overflow:hidden}
+.court{position:absolute;inset:0;pointer-events:none;opacity:.07;color:var(--fg)}
+.court svg{position:absolute;right:-8%;top:6%;width:min(900px,90%);height:auto;transform:rotate(-8deg)}
+.ct-logo{display:block;height:clamp(42px,6vw,72px);width:auto;max-width:100%;margin:0 0 1.6rem}
+.ct-tag{display:inline-flex;gap:.5rem;align-items:center;font:600 .85rem var(--ct-font);color:var(--accent);margin:0 0 1.4rem}
+.ct-tag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.board{background:var(--ct-paper)!important;color:var(--ct-text);border:0!important;border-radius:16px!important;box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+.board-top{color:var(--ct-text)!important;font-family:var(--ct-font)!important}
+.board-top b{font-size:1.25rem;font-weight:700;display:block;letter-spacing:-.02em}
+.board-top small{color:var(--ct-sub);font:400 .78rem var(--f-body)}
+.tabs{display:flex;gap:2px;background:#EDEEE6;border-radius:10px;padding:3px}
+.tabs span{font:500 .75rem var(--f-body);padding:.3rem .6rem;border-radius:8px;color:var(--ct-sub)}
+.tabs span.on{background:#fff;color:var(--ct-text);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.board-grid .h,.board-grid .c{color:var(--ct-sub)!important}
+.board .cell{border:1px dashed #E1E3DA!important;color:var(--ct-text)!important}
+.board .cell.b{background:var(--ct-lime)!important;border:0!important;color:var(--ct-ink)!important}
+.board .cell.b.wa{background:var(--ct-wa)!important}
+.board .cell.b.fx{background:var(--ct-slot)!important}
+.board .legend{color:var(--ct-sub)!important}
+@media (max-width:600px){.board .cell{font-size:0}.board-top{flex-wrap:wrap}.tabs{display:none}.board-grid{grid-template-columns:3.6rem repeat(6,minmax(0,1fr))}}
+.board .legend i{background:var(--ct-lime)!important;border:0!important}
+.board .legend .wa i{background:var(--ct-wa)!important}
+.board .legend .fx i{background:var(--ct-slot)!important}
+
+/* Readability + hero stats */
+body{font-size:1.075rem;line-height:1.7}
+.lead{font-size:1.2rem;color:var(--muted);max-width:52ch;margin:-1.8rem 0 3rem}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 2rem;margin-top:clamp(3rem,6vw,5rem)}
+.stats div{border-top:1px solid var(--line);padding-top:1rem}
+.stats b{display:block;font:500 clamp(2.2rem,4.5vw,3.4rem)/1 var(--f-display);letter-spacing:-.04em}
+.stats span{display:block;color:var(--muted);font-size:.95rem;margin-top:.5rem;max-width:22ch}
+@media (max-width:760px){.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem 1.2rem}}
+.profile-more{font-size:1.2rem;line-height:1.7;color:var(--muted);max-width:60ch;margin:2.5rem 0 0}
+.job li b,.profile-more b{color:var(--fg);font-weight:600}
 
 /* Reveal */
 .rv{transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
@@ -287,37 +327,39 @@ body.zone .bar{background:color-mix(in srgb,var(--bg) 82%,transparent)}
           <a class="btn" href="https://github.com/Gauido" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
+      <div class="stats" id="stats"></div>
     </div>
   </section>
-
-  
 
   <section class="sec" id="perfil">
     <div class="wrap">
       <h2 class="eyebrow" data-k="profileTitle"></h2>
       <p class="profile" id="profile"></p>
+      <p class="profile-more rv" data-k="profile"></p>
     </div>
   </section>
 
   <section class="sec" id="experiencia">
     <div class="wrap">
       <h2 class="sec-title rv split" data-k="expTitle"></h2>
+      <p class="lead rv" data-x="expLead"></p>
       <div class="jobs" id="jobs"></div>
     </div>
   </section>
 
   <section class="sec ct" id="centralturnos">
+    <div class="court" aria-hidden="true"><svg viewBox="0 0 400 200" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="396" height="196" rx="2"/><line x1="200" y1="2" x2="200" y2="198"/><line x1="70" y1="2" x2="70" y2="198"/><line x1="330" y1="2" x2="330" y2="198"/><line x1="70" y1="100" x2="330" y2="100"/></svg></div>
     <div class="wrap">
       <div class="ct-head">
         <div>
-          <p class="eyebrow" data-k="laneOwn"></p>
-          <h2 class="rv">Central<br>Turnos</h2>
+          <p class="ct-tag" data-x="ctTag"></p>
+          <h2 class="rv" style="margin:0"><svg viewBox="40 42 870 175" class="ct-logo" role="img" aria-label="CentralTurnos"> <g><g transform="translate(61.3 46.3) scale(0.867)"> <path d="M-14 86 H22 M-6 116 H26 M-14 146 H16" stroke="#fff" stroke-width="12" stroke-linecap="round" /> <g transform="translate(30 0) rotate(-6 100 100)"> <rect x="20" y="36" width="160" height="148" rx="34" fill="#fff" /> <rect x="38" y="88" width="124" height="78" rx="14" fill="#23271f" /> <rect x="54" y="14" width="18" height="42" rx="9" fill="#fff" /> <rect x="128" y="14" width="18" height="42" rx="9" fill="#fff" /> <rect x="50" y="100" width="28" height="24" rx="6" fill="#dfe2d6" /> <rect x="86" y="100" width="28" height="24" rx="6" fill="#dfe2d6" /> <rect x="122" y="100" width="28" height="24" rx="6" fill="#dfe2d6" /> <rect x="50" y="132" width="28" height="24" rx="6" fill="#dfe2d6" /> <rect x="86" y="132" width="28" height="24" rx="6" fill="#c6f36b" /> <rect x="122" y="132" width="28" height="24" rx="6" fill="#dfe2d6" /> <path d="M93 144 L99 150 L108 139" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" /> </g> </g></g> <g> <path fill="#fff" d="M310.79 168.83Q302.44 168.83 296.37 165.59Q290.3 162.36 287 156.38Q283.69 150.4 283.69 142.2Q283.69 134 286.98 128.04Q290.26 122.09 296.3 118.88Q302.35 115.67 310.65 115.67Q316.51 115.67 321.69 117.76Q326.87 119.84 330.52 124.01Q334.18 128.19 335.35 134.51L319.98 137.61Q319.13 132.4 316.69 129.92Q314.26 127.44 310.6 127.44Q305.4 127.44 303.05 131.68Q300.71 135.92 300.71 142.44Q300.71 148.95 303.03 153.01Q305.35 157.06 310.6 157.06Q314.12 157.06 316.6 154.93Q319.08 152.79 320.3 148.15L335.07 150.59Q334.18 155.47 331.76 158.96Q329.35 162.45 325.93 164.61Q322.51 166.76 318.59 167.79Q314.68 168.83 310.79 168.83Z M364.18 168.83Q356.68 168.83 350.47 165.57Q344.26 162.31 340.56 156.33Q336.85 150.36 336.85 142.15Q336.85 134.04 340.46 128.11Q344.07 122.19 350.26 118.93Q356.45 115.67 364.18 115.67Q368.45 115.67 372.83 116.94Q377.21 118.2 380.92 121.44Q384.62 124.67 386.87 130.51Q389.12 136.34 389.12 145.44H347.4V136.81H374.45L373.23 139.11Q372.85 134.7 371.52 131.98Q370.18 129.26 368.19 128.02Q366.2 126.78 363.71 126.78Q360.29 126.78 358.11 128.79Q355.93 130.81 354.9 134.3Q353.87 137.79 353.87 142.25Q353.87 148.95 356.28 152.98Q358.7 157.01 364.04 157.01Q367.32 157.01 369.76 155.3Q372.2 153.59 373.6 149.89L388.23 153.36Q386.45 158.89 382.63 162.31Q378.81 165.73 373.93 167.28Q369.06 168.83 364.18 168.83Z M394.42 167.56V116.94H410.4V128.7L410.03 126.59Q412.47 121.34 416.62 118.51Q420.76 115.67 426.67 115.67Q432.76 115.67 436.49 118.46Q440.22 121.25 441.9 126.1Q443.59 130.95 443.59 137.14V167.56H427.19V138.12Q427.19 133.06 425.71 130.44Q424.23 127.81 420.44 127.81Q415.7 127.81 413.29 132.15Q410.87 136.48 410.87 145.67V167.56Z M467.08 167.56Q460.38 167.56 457.05 164.51Q453.72 161.47 453.72 155.47V128.65H446.88V116.94H453.72V107.28L470.17 103.2V116.94H479.22V128.65H470.17V153.22Q470.17 154.81 470.62 155.33Q471.06 155.84 472.52 155.84H480.25V167.56Z M485.46 167.56V116.94H501.44V128.61L500.74 127.01Q503.22 121.2 507.51 118.44Q511.8 115.67 517.15 115.67Q518.65 115.67 520.24 115.9Q521.83 116.14 523.43 116.7L522.35 130.44Q519.11 129.54 516.21 129.54Q513.58 129.54 511.05 130.41Q508.52 131.28 506.46 133.32Q504.4 135.36 503.15 138.92Q501.91 142.48 501.91 147.87V167.56Z M542.7 168.78Q537.96 168.78 533.72 167.19Q529.48 165.59 526.85 162.22Q524.23 158.84 524.23 153.45Q524.23 147.64 527.58 143.86Q530.93 140.09 537.05 138.22Q543.17 136.34 551.6 136.34H558.17L557.32 137.84V134.84Q557.32 130.25 555.75 128.14Q554.18 126.03 550.57 126.03Q547.06 126.03 545.23 127.9Q543.4 129.78 542.84 133.39L526.43 130.72Q527.37 126.45 530.25 123.03Q533.13 119.61 538.36 117.59Q543.59 115.58 551.46 115.58Q558.4 115.58 563.35 117.64Q568.29 119.7 570.94 124.67Q573.59 129.64 573.59 138.4V153.22Q573.59 154.81 574.03 155.33Q574.48 155.84 575.93 155.84H577.99V167.56H570.68Q564.31 167.56 561.17 164.49Q558.02 161.42 558.02 155.47V153.59L561.02 154.86Q560.46 156.92 559.36 159.31Q558.26 161.7 556.24 163.86Q554.23 166.01 550.92 167.4Q547.62 168.78 542.7 168.78ZM547.62 158.09Q550.67 158.09 552.87 156.73Q555.07 155.37 556.29 152.79Q557.51 150.22 557.51 146.56V145.2H552.4Q547.9 145.2 545.42 146.37Q542.93 147.54 541.97 149.23Q541.01 150.92 541.01 152.47Q541.01 153.5 541.52 154.81Q542.04 156.12 543.45 157.11Q544.85 158.09 547.62 158.09Z M596 167.56Q589.29 167.56 585.97 164.51Q582.64 161.47 582.64 155.47V97.25H599.09V153.22Q599.09 154.81 599.54 155.33Q599.98 155.84 601.43 155.84H604.9V167.56Z" /> <path fill="#c6f36b" d="M624.92 167.56Q618.22 167.56 614.89 164.51Q611.56 161.47 611.56 155.47V128.65H604.72V116.94H611.56V107.28L628.02 103.2V116.94H637.06V128.65H628.02V153.22Q628.02 154.81 628.46 155.33Q628.91 155.84 630.36 155.84H638.09V167.56Z M659.29 168.83Q653.29 168.83 649.54 166.04Q645.79 163.25 644.08 158.4Q642.36 153.54 642.36 147.36V116.94H658.82V145.34Q658.82 151.39 660.83 154.04Q662.85 156.69 666.6 156.69Q668.47 156.69 670.44 155.68Q672.41 154.67 673.77 152.02Q675.13 149.37 675.13 144.4V116.94H691.54V167.56H675.6V155.7L675.97 157.81Q673.54 163.15 669.39 165.99Q665.24 168.83 659.29 168.83Z M700.12 167.56V116.94H716.1V128.61L715.4 127.01Q717.88 121.2 722.17 118.44Q726.46 115.67 731.81 115.67Q733.31 115.67 734.9 115.9Q736.49 116.14 738.09 116.7L737.01 130.44Q733.77 129.54 730.87 129.54Q728.24 129.54 725.71 130.41Q723.18 131.28 721.12 133.32Q719.06 135.36 717.81 138.92Q716.57 142.48 716.57 147.87V167.56Z M742.45 167.56V116.94H758.43V128.7L758.06 126.59Q760.5 121.34 764.65 118.51Q768.79 115.67 774.7 115.67Q780.79 115.67 784.52 118.46Q788.25 121.25 789.93 126.1Q791.62 130.95 791.62 137.14V167.56H775.22V138.12Q775.22 133.06 773.74 130.44Q772.26 127.81 768.47 127.81Q763.73 127.81 761.32 132.15Q758.9 136.48 758.9 145.67V167.56Z" /> <path fill="#c6f36b" d="M881.25 168.83Q875.44 168.83 870.12 167.23Q864.8 165.64 861.14 162.17Q857.48 158.7 856.55 153.08L871.12 150.17Q871.5 153.78 873.75 155.65Q876 157.53 880.55 157.53Q884.9 157.53 886.83 156.03Q888.75 154.53 888.75 152.56Q888.75 150.83 887.15 149.35Q885.56 147.87 881.3 147.26L877.26 146.7Q874.5 146.33 871.26 145.62Q868.03 144.92 865.12 143.44Q862.22 141.97 860.39 139.29Q858.56 136.62 858.56 132.31Q858.56 127.25 861.28 123.52Q864 119.79 868.97 117.73Q873.94 115.67 880.59 115.67Q886.36 115.67 891.3 117.31Q896.25 118.95 899.65 122.21Q903.05 125.47 904.03 130.34L889.64 133.29Q889.31 131.75 888.51 130.22Q887.72 128.7 886.01 127.69Q884.3 126.69 881.25 126.69Q877.97 126.69 876.23 127.93Q874.5 129.17 874.5 131.09Q874.5 132.73 875.76 133.74Q877.03 134.75 879.09 135.33Q881.15 135.92 883.55 136.29L888.42 137Q892.45 137.56 896.2 139.2Q899.95 140.84 902.37 143.94Q904.78 147.03 904.78 152.04Q904.78 157.58 901.69 161.33Q898.59 165.08 893.25 166.95Q887.9 168.83 881.25 168.83Z" /> </g> <g><g transform="translate(825.5 142.2) rotate(-25)"> <circle r="22.4" fill="#c6f36b" stroke="#23271f" stroke-width="6.2" /> <path d="M-10.7 -15.3 C-4.0 -7.7 -4.0 7.7 -10.7 15.3 M10.7 -15.3 C4.0 -7.7 4.0 7.7 10.7 15.3" stroke="#fff" stroke-width="3.4" fill="none" stroke-linecap="round" /> </g></g> </svg></h2>
           <p class="ct-sub rv" data-k="ctSub"></p>
           <ul class="chips rv" id="chips"></ul>
           <a class="btn primary" href="https://centralturnos.com/landing" target="_blank" rel="noopener"><span data-k="ctLink"></span><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
         </div>
         <div class="board" id="board" aria-hidden="true">
-          <div class="board-top"><span data-u="boardTitle"></span><span data-u="boardDay"></span></div>
+          <div class="board-top"><span><b data-u="boardTitle"></b><small data-u="boardDay"></small></span><span class="tabs"><span data-u="tm"></span><span data-u="tt"></span><span class="on" data-u="tn"></span></span></div>
           <div class="board-grid" id="boardGrid"></div>
           <div class="legend"><span><i></i>Web</span><span class="wa"><i></i>WhatsApp</span><span class="fx"><i></i><span data-u="fixed"></span></span></div>
         </div>
@@ -341,6 +383,7 @@ body.zone .bar{background:color-mix(in srgb,var(--bg) 82%,transparent)}
   <section class="sec" id="integraciones">
     <div class="wrap">
       <h2 class="sec-title rv split" data-k="intTitle"></h2>
+      <p class="lead rv" data-x="intLead"></p>
       <dl class="dl rv" id="integrations"></dl>
     </div>
   </section>
@@ -348,6 +391,7 @@ body.zone .bar{background:color-mix(in srgb,var(--bg) 82%,transparent)}
   <section class="sec" id="servicios">
     <div class="wrap">
       <h2 class="sec-title rv split" data-k="svcTitle"></h2>
+      <p class="lead rv" data-x="svcLead"></p>
       <div class="services" id="services"></div>
     </div>
   </section>
@@ -601,11 +645,31 @@ const T = {
   }
 };
 
+const X = {
+  es: {
+    ctTag: "Proyecto propio · en producción",
+    profileShort: "Hago sistemas .NET + Angular que funcionan en producción. Y construí mi propio SaaS, de la base de datos al servidor.",
+    expLead: "Seis años trabajando sobre sistemas que se usan todos los días: trenes, telecomunicaciones y gestión.",
+    intLead: "CentralTurnos cobra, factura y conversa con los clientes. Estas son las integraciones que lo hacen posible.",
+    svcLead: "También tomo proyectos freelance. Esto es lo que puedo hacer por tu empresa.",
+    stats: [["6+","años en sistemas productivos"],["7","proyectos en producción para Trenes Argentinos"],["3","países usan tucarpeta.com con Claro"],["1","SaaS propio, hecho de punta a punta"]]
+  },
+  en: {
+    ctTag: "Own product · live in production",
+    profileShort: "I build .NET + Angular systems that run in production. And I built my own SaaS, from the database to the server.",
+    expLead: "Six years working on systems people use every day: railways, telecom and business management.",
+    intLead: "CentralTurnos takes payments, issues invoices and talks to customers. These are the integrations behind it.",
+    svcLead: "I also take freelance projects. Here is what I can do for your company.",
+    stats: [["6+","years on production systems"],["7","live projects for Trenes Argentinos"],["3","countries use tucarpeta.com with Claro"],["1","own SaaS, built end to end"]]
+  }
+};
+const BOLD = [/7 proyectos productivos/, /7 production projects/, /Trenes Argentinos/, /tucarpeta\.com/, /Claro/, /stored procedures/, /CI\/CD/, /Azure DevOps/];
+
 const U = {
   es: { nav:[["perfil","Perfil"],["experiencia","Experiencia"],["centralturnos","CentralTurnos"],["stack","Stack"],["contacto","Contacto"]],
-        copy:"Copiar mail", copied:"Copiado", boardTitle:"Grilla de reservas · ejemplo", boardDay:"Vie 20:00", court:"Cancha", fixed:"Turno fijo", langTitle:"Idiomas" },
+        copy:"Copiar mail", copied:"Copiado", boardTitle:"Reservas", boardDay:"Viernes · 4 canchas · ejemplo", tm:"Mañana", tt:"Tarde", tn:"Noche", court:"Cancha", fixed:"Turno fijo", langTitle:"Idiomas" },
   en: { nav:[["perfil","Profile"],["experiencia","Experience"],["centralturnos","CentralTurnos"],["stack","Stack"],["contacto","Contact"]],
-        copy:"Copy email", copied:"Copied", boardTitle:"Booking board · sample", boardDay:"Fri 8 PM", court:"Court", fixed:"Recurring", langTitle:"Languages" }
+        copy:"Copy email", copied:"Copied", boardTitle:"Bookings", boardDay:"Friday · 4 courts · sample", tm:"Morning", tt:"Afternoon", tn:"Evening", court:"Court", fixed:"Recurring", langTitle:"Languages" }
 };
 T.es.langTitle = T.es.langTitle || "Idiomas"; T.en.langTitle = T.en.langTitle || "Languages";
 
@@ -630,11 +694,14 @@ function render(l){
   $("#themeBtn").setAttribute("aria-label", t.theme);
   $("#nav").innerHTML = u.nav.map(([id,n]) => `<a href="#${id}">${n}</a>`).join("");
 
-  $("#profile").innerHTML = t.profile.split(/\s+/).map(w => `<span class="w">${w}</span>`).join(" ");
+  const x = X[l];
+  document.querySelectorAll("[data-x]").forEach(el => { el.textContent = x[el.dataset.x]; });
+  $("#stats").innerHTML = x.stats.map(([n,s]) => `<div><b>${n}</b><span>${s}</span></div>`).join("");
+  $("#profile").innerHTML = x.profileShort.split(/\s+/).map(w => `<span class="w">${w}</span>`).join(" ");
   $("#jobs").innerHTML = t.jobs.map((j,i) => `
     <article class="job" id="${j.id}" style="--k:${i}">
       <div><h3>${j.t}</h3><p class="where">${j.r}<br>${j.w}</p><p class="when">${j.d}</p></div>
-      <ul>${j.b.map(x => `<li>${x}</li>`).join("")}</ul>
+      <ul>${j.b.map(x => `<li>${BOLD.reduce((s,r) => s.replace(r, m => `<b>${m}</b>`), x)}</li>`).join("")}</ul>
     </article>`).join("");
   $("#nums").innerHTML = t.ctNums.map(([n,lab]) => `<div><dt data-n="${n}">${n}</dt><dd>${lab}</dd></div>`).join("");
   $("#facts").innerHTML = t.ctFacts.map(x => `<li>${x}</li>`).join("");
