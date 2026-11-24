@@ -391,7 +391,7 @@ const T = {
       "En etapa piloto con clubes reales, cobrado con un plan mensual según la cantidad de canchas."
     ],
     casesTitle: "Problemas que resolví",
-    casesLead: "Algunos problemas concretos de CentralTurnos y cómo los resolví.",
+    casesLead: "Decisiones técnicas detrás de CentralTurnos, con el problema que resolvió cada una.",
     cases: [
       ["Dos reservas en la misma cancha y horario", "Una <code>exclusion constraint</code> con índice GiST lo impide en la base de datos, aunque dos pedidos lleguen al mismo milisegundo."],
       ["Dos clicks simultáneos, dos reembolsos", "Máquina de estados para el ciclo de vida de la reserva y técnica cancel-first; <code>SELECT … FOR UPDATE</code> en los cobros concurrentes."],
@@ -488,7 +488,7 @@ const T = {
       "In pilot with real clubs, billed monthly by number of courts."
     ],
     casesTitle: "Problems I solved",
-    casesLead: "Some concrete problems from CentralTurnos and how I solved them.",
+    casesLead: "Technical decisions behind CentralTurnos and the problem each one solved.",
     cases: [
       ["Two bookings for the same court and time", "A GiST-indexed <code>exclusion constraint</code> prevents it at the database level, even when two requests arrive in the same millisecond."],
       ["Two simultaneous clicks, two refunds", "A state machine for the booking lifecycle plus a cancel-first technique; <code>SELECT … FOR UPDATE</code> on concurrent payments."],
