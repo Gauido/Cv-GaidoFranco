@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Franco Gaido</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Franco Gaido, desarrollador Full Stack .NET + Angular. CV, experiencia y CentralTurnos, su SaaS de gestión de turnos.">
+<meta name="description" content="Franco Gaido, desarrollador Full Stack .NET + Angular. CV, experiencia, desarrollo con Claude e IA, y CentralTurnos, su SaaS de gestión de turnos.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200..800&family=Schibsted+Grotesk:wght@500..800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap">
@@ -292,6 +292,32 @@ body{font-size:1.075rem;line-height:1.7}
   .rv.pre,.board.pre .cell.b{opacity:1;transform:none}
   html{scroll-behavior:auto}
 }
+/* AI / Claude section */
+.ai-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:3.5rem;align-items:start}
+@media (min-width:901px){.ai-grid > div:first-child{position:sticky;top:100px}}
+@media (max-width:900px){.ai-grid{grid-template-columns:1fr;gap:2.5rem}}
+.term{background:#0E1015;color:#E6E8EE;border-radius:14px;padding:1.1rem 1.3rem 1.4rem;font:400 .9rem/1.7 var(--f-mono);box-shadow:0 30px 60px -30px rgba(11,13,18,.45);border:1px solid #1F232C;overflow:hidden}
+.term-top{display:flex;justify-content:space-between;gap:1rem;color:#7B8394;font-size:.78rem;padding-bottom:.8rem;margin-bottom:1rem;border-bottom:1px solid #1F232C}
+.term-top b{color:#D97757;font-weight:600}
+.term p{margin:0;padding-left:1.4rem;position:relative;overflow-wrap:anywhere}
+.term p+p{margin-top:.45rem}
+.term p::before{position:absolute;left:0;top:0}
+.term .in{color:#fff;margin-bottom:.9rem}
+.term .in::before{content:">";color:#D97757}
+.term .st::before{content:"●";color:#7B8394;font-size:.7em;top:.15em}
+.term .ok{color:#9BE39B;margin-top:.9rem!important}
+.term .ok::before{content:"✓"}
+.term p{transition:opacity .5s ease,transform .5s ease;transition-delay:calc(var(--i,0)*260ms + 200ms)}
+.term.pre p{opacity:0;transform:translateY(6px)}
+.term-cap{font-size:.92rem;color:var(--muted);margin:.9rem 0 0}
+.ai-list{margin:0;padding:0;list-style:none;display:grid;gap:0;border-top:1px solid var(--line)}
+.ai-list li{padding:1.3rem 0;border-bottom:1px solid var(--line)}
+.ai-list h3{font-size:1.25rem;margin:0 0 .45rem}
+.ai-list p{margin:0;color:var(--muted)}
+.ai-list p b{color:var(--fg);font-weight:600}
+.ai-tools{display:flex;flex-wrap:wrap;gap:.45rem;margin:2.2rem 0 0;padding:0;list-style:none}
+.ai-tools li{font:500 .85rem var(--f-body);border:1px solid var(--line);border-radius:999px;padding:.35rem .8rem;color:var(--fg);background:var(--bg2)}
+@media (prefers-reduced-motion:reduce){.term.pre p{opacity:1;transform:none}}
 </style>
 
 <div class="loader" id="loader" aria-hidden="true" hidden><span><i>Franco</i> <i style="animation-delay:.12s"><em>Gaido</em></i></span></div>
@@ -381,6 +407,23 @@ body{font-size:1.075rem;line-height:1.7}
     </div>
   </section>
 
+  <section class="sec" id="ia">
+    <div class="wrap">
+      <h2 class="sec-title rv split" data-k="aiSecTitle"></h2>
+      <p class="lead rv" data-k="aiSecLead"></p>
+      <div class="ai-grid">
+        <div class="rv">
+          <div class="term rv" id="term"></div>
+          <p class="term-cap" data-k="termCap"></p>
+        </div>
+        <div>
+          <ul class="ai-list rv" id="aiList"></ul>
+          <ul class="ai-tools rv" id="aiTools"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="sec" id="integraciones">
     <div class="wrap">
       <h2 class="sec-title rv split" data-k="intTitle"></h2>
@@ -462,7 +505,7 @@ const T = {
     laneEdu: "Formación",
     now: "hoy",
     profileTitle: "Perfil",
-    profile: "Diseño, desarrollo y despliego aplicaciones web y de escritorio de nivel productivo. Me especializo en .NET (Framework, Core y .NET 8) y Angular, con Clean Architecture, CQRS, MediatR y Dapper. Trabajo con Oracle, PostgreSQL y MongoDB, y automatizo despliegues con Azure DevOps sobre IIS. Además construí solo, de punta a punta, CentralTurnos: un SaaS multi-tenant para complejos deportivos, con cobros por Mercado Pago, facturación electrónica AFIP y un bot de WhatsApp con IA.",
+    profile: "Diseño, desarrollo y despliego aplicaciones web y de escritorio de nivel productivo. Me especializo en .NET (Framework, Core y .NET 8) y Angular, con Clean Architecture, CQRS, MediatR y Dapper. Trabajo con Oracle, PostgreSQL y MongoDB, y automatizo despliegues con Azure DevOps sobre IIS. Además construí solo, de punta a punta, CentralTurnos: un SaaS multi-tenant para complejos deportivos, con cobros por Mercado Pago, facturación electrónica AFIP y un bot de WhatsApp con IA. En mi día a día desarrollo con Claude Code y automatizo procesos con agentes de IA.",
     expTitle: "Experiencia",
     jobs: [
       {id:"itr", t:"ITR", r:"Desarrollador .NET / Angular", w:"Remoto · Prov. de Buenos Aires", d:"Mayo 2023 – hoy", b:[
@@ -507,6 +550,18 @@ const T = {
       ["Deploys sin cortar el servicio", "Pantalla de mantenimiento servida por Nginx con avance real por fase, smoke test después del deploy y rollback."],
       ["Tests que pasan sin probar nada", "Controles negativos: rompo el código a propósito y verifico que el test se pone en rojo. Accesibilidad y mobile también se miden con Chrome headless, no a ojo."]
     ],
+    aiSecTitle: "Desarrollo con Claude",
+    aiSecLead: "La IA ya es parte de cómo construyo software. Uso Claude todos los días: en el código, en la terminal y en tareas que corren solas.",
+    termCap: "Así se hizo este sitio: Claude Code propone y ejecuta, yo reviso y decido qué llega a producción.",
+    term: [["in","rediseñá el CV web: scroll suave, tema claro y CentralTurnos con su marca real"],["st","Leo index.html y los PDF del CV"],["st","Armo la nueva versión y la pruebo en mobile y desktop"],["st","Abro un PR con preview en Vercel"],["ok","Revisado y mergeado · live en franco-gaido.vercel.app"]],
+    termTop: "claude · cv-gaidofranco",
+    aiItems: [
+      ["Claude Code en el día a día", "Exploro código que no conozco, implemento módulos acotados, escribo tests y reviso diffs desde la terminal. Trabajo con ramas y <b>pull requests</b>: cada cambio pasa por mi revisión antes del merge."],
+      ["Agentes y automatización", "Automaticé mi propia búsqueda laboral con Claude: rastreo de ofertas remotas, <b>borradores de postulación en Gmail</b> con el CV adjunto y prospección de reclutadores en LinkedIn con <b>Claude in Chrome</b>. Yo reviso y envío."],
+      ["MCP y conectores", "Conecto Claude con herramientas reales por <b>MCP</b>: GitHub, Gmail, Google Drive y el navegador. Defino qué puede hacer solo y qué necesita mi aprobación."],
+      ["IA dentro del producto", "En CentralTurnos integré <b>Google Gemini</b> para entender mensajes y audios de WhatsApp, con el código como única fuente de verdad para montos e identidades."]
+    ],
+    aiTools: ["Claude Code","Claude in Chrome","MCP","Prompting","Gemini API"],
     intTitle: "Integraciones",
     integrations: [
       ["Mercado Pago", "Checkout Pro, OAuth con refresh de tokens, webhooks con firma HMAC e idempotencia, reembolsos, conciliación y cobro por QR en el punto de venta."],
@@ -531,10 +586,11 @@ const T = {
       ["Testing","xUnit, Moq, FluentAssertions, Jasmine/Karma"],
       ["DevOps","Docker Compose, Nginx, GitHub Actions, Azure DevOps, IIS, Linux / Windows Server, health checks"],
       ["Seguridad","JWT httpOnly + CSRF, AES-256-GCM con rotación de claves, MFA, rate limiting, HIBP"],
-      ["Documentos","QuestPDF, ClosedXML, QRCoder"]
+      ["IA","<b>Claude Code</b>, Claude in Chrome, MCP (GitHub, Gmail, Drive), Google Gemini API"],
+    ["Documentos","QuestPDF, ClosedXML, QRCoder"]
     ],
     aiTitle: "Cómo trabajo",
-    ai1: "Uso asistentes de IA en mi flujo de desarrollo: para auditar código contra una especificación, implementar módulos acotados y acelerar lo repetitivo. La arquitectura y las decisiones las tomo yo.",
+    ai1: "La IA acelera; la arquitectura, la revisión y las decisiones son mías. La uso para auditar código contra una especificación, implementar módulos acotados y sacarme de encima lo repetitivo.",
     ai2: "También la uso dentro del producto: en CentralTurnos, Gemini interpreta lo que escribe o dice el cliente por WhatsApp, pero todo lo que toca plata lo decide el código.",
     eduTitle: "Técnico Superior en Desarrollo de Software",
     edu: "Instituto María Justa Moyano de Ezpeleta · 2017 – 2019",
@@ -559,7 +615,7 @@ const T = {
     laneEdu: "Education",
     now: "now",
     profileTitle: "Profile",
-    profile: "I design, build and deploy production-grade web and desktop applications. I specialize in .NET (Framework, Core and .NET 8) and Angular, using Clean Architecture, CQRS, MediatR and Dapper. I work with Oracle, PostgreSQL and MongoDB, and automate deployments with Azure DevOps to IIS. I also built CentralTurnos on my own, end to end: a multi-tenant SaaS for sports complexes, with Mercado Pago payments, Argentine e-invoicing and an AI-powered WhatsApp bot.",
+    profile: "I design, build and deploy production-grade web and desktop applications. I specialize in .NET (Framework, Core and .NET 8) and Angular, using Clean Architecture, CQRS, MediatR and Dapper. I work with Oracle, PostgreSQL and MongoDB, and automate deployments with Azure DevOps to IIS. I also built CentralTurnos on my own, end to end: a multi-tenant SaaS for sports complexes, with Mercado Pago payments, Argentine e-invoicing and an AI-powered WhatsApp bot. Day to day, I build with Claude Code and automate workflows with AI agents.",
     expTitle: "Experience",
     jobs: [
       {id:"itr", t:"ITR", r:".NET / Angular Developer", w:"Remote · Buenos Aires Province", d:"May 2023 – Present", b:[
@@ -604,6 +660,18 @@ const T = {
       ["Deploys without downtime for users", "An Nginx-served maintenance page with real per-phase progress, a post-deploy smoke test and rollback."],
       ["Tests that pass without testing anything", "Negative controls: I break the code on purpose and check the test goes red. Accessibility and mobile are measured with headless Chrome too, not eyeballed."]
     ],
+    aiSecTitle: "Building with Claude",
+    aiSecLead: "AI is now part of how I build software. I use Claude every day: in the code, in the terminal and for tasks that run on their own.",
+    termCap: "This is how this site was built: Claude Code proposes and executes, I review and decide what ships.",
+    term: [["in","redesign the web CV: smooth scroll, light theme and CentralTurnos in its real brand"],["st","Reading index.html and the CV PDFs"],["st","Building the new version and testing it on mobile and desktop"],["st","Opening a PR with a Vercel preview"],["ok","Reviewed and merged · live at franco-gaido.vercel.app"]],
+    termTop: "claude · cv-gaidofranco",
+    aiItems: [
+      ["Claude Code, every day", "I explore unfamiliar code, implement well-scoped modules, write tests and review diffs from the terminal. I work with branches and <b>pull requests</b>: every change goes through my review before merging."],
+      ["Agents and automation", "I automated my own job search with Claude: finding remote openings, <b>application drafts in Gmail</b> with my CV attached, and recruiter outreach on LinkedIn with <b>Claude in Chrome</b>. I review and send."],
+      ["MCP and connectors", "I connect Claude to real tools through <b>MCP</b>: GitHub, Gmail, Google Drive and the browser. I decide what it can do on its own and what needs my approval."],
+      ["AI inside the product", "In CentralTurnos I integrated <b>Google Gemini</b> to understand WhatsApp messages and voice notes, with code as the single source of truth for amounts and identities."]
+    ],
+    aiTools: ["Claude Code","Claude in Chrome","MCP","Prompting","Gemini API"],
     intTitle: "Integrations",
     integrations: [
       ["Mercado Pago", "Checkout Pro, OAuth with token refresh, HMAC-signed idempotent webhooks, refunds, reconciliation and QR payments at the point of sale."],
@@ -628,10 +696,11 @@ const T = {
       ["Testing","xUnit, Moq, FluentAssertions, Jasmine/Karma"],
       ["DevOps","Docker Compose, Nginx, GitHub Actions, Azure DevOps, IIS, Linux / Windows Server, health checks"],
       ["Security","JWT httpOnly + CSRF, AES-256-GCM with key rotation, MFA, rate limiting, HIBP"],
-      ["Documents","QuestPDF, ClosedXML, QRCoder"]
+      ["AI","<b>Claude Code</b>, Claude in Chrome, MCP (GitHub, Gmail, Drive), Google Gemini API"],
+    ["Documents","QuestPDF, ClosedXML, QRCoder"]
     ],
     aiTitle: "How I work",
-    ai1: "AI coding assistants are part of my workflow: auditing code against a spec, implementing well-scoped modules and speeding up repetitive work. I own the architecture and the decisions.",
+    ai1: "AI speeds things up; the architecture, the review and the decisions are mine. I use it to audit code against a spec, implement well-scoped modules and take repetitive work off my plate.",
     ai2: "I also use it inside the product: in CentralTurnos, Gemini interprets what customers write or say on WhatsApp, but anything involving money is decided by code.",
     eduTitle: "Higher Technician in Software Development",
     edu: "Instituto María Justa Moyano de Ezpeleta · 2017 – 2019",
@@ -667,9 +736,9 @@ const X = {
 const BOLD = [/7 proyectos productivos/, /7 production projects/, /Trenes Argentinos/, /tucarpeta\.com/, /Claro/, /stored procedures/, /CI\/CD/, /Azure DevOps/];
 
 const U = {
-  es: { nav:[["perfil","Perfil"],["experiencia","Experiencia"],["centralturnos","CentralTurnos"],["stack","Stack"],["contacto","Contacto"]],
+  es: { nav:[["perfil","Perfil"],["experiencia","Experiencia"],["centralturnos","CentralTurnos"],["ia","IA"],["stack","Stack"],["contacto","Contacto"]],
         copy:"Copiar mail", copied:"Copiado", boardTitle:"Reservas", boardDay:"Viernes · 4 canchas · ejemplo", tm:"Mañana", tt:"Tarde", tn:"Noche", court:"Cancha", fixed:"Turno fijo", langTitle:"Idiomas" },
-  en: { nav:[["perfil","Profile"],["experiencia","Experience"],["centralturnos","CentralTurnos"],["stack","Stack"],["contacto","Contact"]],
+  en: { nav:[["perfil","Profile"],["experiencia","Experience"],["centralturnos","CentralTurnos"],["ia","AI"],["stack","Stack"],["contacto","Contact"]],
         copy:"Copy email", copied:"Copied", boardTitle:"Bookings", boardDay:"Friday · 4 courts · sample", tm:"Morning", tt:"Afternoon", tn:"Evening", court:"Court", fixed:"Recurring", langTitle:"Languages" }
 };
 T.es.langTitle = T.es.langTitle || "Idiomas"; T.en.langTitle = T.en.langTitle || "Languages";
@@ -709,6 +778,9 @@ function render(l){
   $("#cases").innerHTML = t.cases.map(([h,p]) => `<article class="case"><h4>${h}</h4><p>${p}</p></article>`).join("");
   $("#integrations").innerHTML = t.integrations.map(([k,v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("");
   $("#services").innerHTML = t.services.map(s => `<div class="service rv"><h3>${s.h}</h3><p>${s.p}</p></div>`).join("");
+  $("#term").innerHTML = `<div class="term-top"><b>✻ Claude Code</b><span>${t.termTop}</span></div>` + t.term.map(([k,v],i) => `<p class="${k}" style="--i:${i}">${v}</p>`).join("");
+  $("#aiList").innerHTML = t.aiItems.map(([h,p]) => `<li><h3>${h}</h3><p>${p}</p></li>`).join("");
+  $("#aiTools").innerHTML = t.aiTools.map(x => `<li>${x}</li>`).join("");
   $("#skills").innerHTML = t.skills.map(([k,v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("");
 
   const lbl = {w:"Web", a:"WhatsApp", f:u.fixed};
